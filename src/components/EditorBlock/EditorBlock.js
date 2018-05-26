@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
+import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
-import draftToHtml from 'draftjs-to-html';
 
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import htmlToDraft from 'html-to-draftjs';
 
 
 export default class EditorBlock extends Component {

@@ -30,15 +30,74 @@
 .App-main {
   display: flex;
   height: 80vh;
+  padding: 0 20px;
 }
 
 .demo-wrapper {
   width: 60%;
-  padding: 0 20px;
+  padding-right: 20px;
 }
 
 .suggestion-block {
-  padding: 0 20px;
   width: 40%;
-  background: black;
+  border: 1px solid black;
+  position: relative;
+}
+
+.suggestion-single {
+  width: 100%;
+  border-bottom: 1px solid black;
+  position: relative;
+  display: flex;
+  padding: 15px 0;
+  justify-content: center;
+  align-items: center;
+
+  transition: height .1s ease-in, opacity .1s ease-in;
+}
+
+.rdw-editor-main {
+  border: 1px solid green;
+  height: 50% !important;
+  padding-left: 20px;
+}
+
+.suggestion-top {
+}
+
+.suggestion-mid {
+}
+
+.suggestion-bottom {
+}
+
+.suggestion-button-expand {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.suggestion-block-multiple .suggestion-button-clear,
+.suggestion-block-single .suggestion-button-expand {
+  display: none;
+}
+
+.suggestion-button-clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.normal-size {
+  height: auto;
+}
+
+.full-size {
+  height: 97%;
+}
+
+.hidden {
+  height: 0;
+  opacity: 0;
 }
