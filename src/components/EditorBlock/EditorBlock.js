@@ -13,14 +13,19 @@ export default class EditorBlock extends Component {
             editorState: EditorState.createEmpty(),
         };
 
+        this.textArray = '';
         this.onEditorStateChange = this.onEditorStateChange.bind(this);
     }
 
     onEditorStateChange(editorState) {
-        console.log(editorState.getCurrentContent().getPlainText().split('\n'));
+        this.textArray = editorState.getCurrentContent().getPlainText().split('\n');
+        if (this.textArray.length > 1) {
+            console.log(this.textArray.slice(0, -1))
+        }
         this.setState({
             editorState,
         });
+        console.log(this.textArray.length);
     };
 
     render() {
