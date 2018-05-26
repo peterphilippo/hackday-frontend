@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import YouTube from 'react-youtube';
 import { connect } from 'react-redux';
 
 import * as actions from '../../actions';
@@ -33,7 +34,11 @@ class SuggestionMid extends Component {
         console.log('suggestion type u midu', this.props.suggestionType);
         return (
             <div className={`suggestion-single suggestion-mid ${this.getSuggestionType()}`}>
-                Suggestion middle
+                <YouTube
+                    videoId="0PrUr3bQdwM"
+                    className="ytiframe"
+                    containerClassName="ytcontainer"
+                />
                 <button className="suggestion-button-expand" onClick={this.handleClick}>Show all</button>
             </div>
         );

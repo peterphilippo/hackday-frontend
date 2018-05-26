@@ -15,7 +15,6 @@ class SuggestionBlock extends Component {
     }
 
     handleClick(e) {
-        console.log('klikliklk');
         e.preventDefault();
         this.props.expandSuggestion('none');
     }
