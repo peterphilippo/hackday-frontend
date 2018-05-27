@@ -42,7 +42,6 @@ class SuggestionTop extends Component {
 
     getId() {
         if (this.props.data.data) {
-            console.log('ima data', this.props.data.data[0]);
             this.setState({
                 currentId: this.props.data.data[0],
             });
@@ -51,21 +50,33 @@ class SuggestionTop extends Component {
         return '933354946111705097'
     }
 
-    render() {
-        console.log('suggestion type u topu', this.props);
+    renderEmpty() {
+        return (
+            <div className={`suggestion-single suggestion-top ${this.getSuggestionType()}`}>
+                <div className="suggestion-single-placeholder-wrapper">
+                    <h2 className="suggestion-single-placeholder">Type your first paragraph to get social media suggestions.</h2>
+                </div>
+            </div>
+        )
+    }
+
+    renderFilled() {
         return (
             <div className={`suggestion-single suggestion-top ${this.getSuggestionType()}`}>
                 <TwitterTweetEmbed
-                    tweetId={this.state.currentId}
+                    tweetId={this.props.givenID}
                 />
                 <button className="suggestion-button-expand" onClick={this.handleClick}>Show all</button>
             </div>
-        );
+        )
+    }
+
+    render() {
+        return this.props.data ? this.renderFilled() : this.renderEmpty()
     }
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         suggestionType: state.suggestionType,
         data: state.data,

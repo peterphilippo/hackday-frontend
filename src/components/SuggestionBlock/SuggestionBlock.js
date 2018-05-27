@@ -27,13 +27,60 @@ class SuggestionBlock extends Component {
         return 'suggestion-block-single';
     }
 
-    render() {
-        return (
-            <div className={`suggestion-block ${this.getSuggestionType()}`}>
-                <button className="suggestion-button-clear" onClick={this.handleClick}>X</button>
+    renderAllSuggestions() {
+        var twitterId;
+        var ytId;
+        if (this.props.data) {
+            twitterId = this.props.data[0].data[0];
+            ytId = this.props.data[2].data.items[0];
+
+        }
+
+        return [
+            <SuggestionTop givenID={twitterId}/>,
+            <SuggestionMid videoID={ytId}/>,
+            <SuggestionBottom/>
+        ];
+    }
+
+    renderSingleSuggestion(type) {
+        if (type === 'top') {
+            return [
+                <SuggestionTop/>,
+                <SuggestionTop/>,
+                <SuggestionTop/>,
+                <SuggestionTop/>,
                 <SuggestionTop/>
+            ]
+        }
+
+        if (type === 'mid') {
+            return [
+                <SuggestionMid/>,
+                <SuggestionMid/>,
+                <SuggestionMid/>,
+                <SuggestionMid/>,
                 <SuggestionMid/>
+            ]
+        }
+
+        if (type === "bot") {
+            return [
+                <SuggestionBottom/>,
+                <SuggestionBottom/>,
+                <SuggestionBottom/>,
+                <SuggestionBottom/>,
                 <SuggestionBottom/>
+            ]
+        }
+    }
+
+    render() {
+        console.log('PROPSI U SUGG BLOCKU', this.props);
+        return (
+            <div className={`suggestion-block ${this.getSuggestionType()} ${this.props.suggestionType !== 'none' ? 'suggestion-block-expanded' : ''}`}>
+                <button className="suggestion-button-clear" onClick={this.handleClick}>X</button>
+                {this.props.suggestionType === 'none' ? this.renderAllSuggestions() : this.renderSingleSuggestion(this.props.suggestionType)}
             </div>
         );
     }
@@ -42,6 +89,7 @@ class SuggestionBlock extends Component {
 function mapStateToProps(state) {
     return {
         suggestionType: state.suggestionType,
+        data: state.data,
     }
 }
 

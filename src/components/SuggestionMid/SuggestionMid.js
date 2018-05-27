@@ -30,12 +30,21 @@ class SuggestionMid extends Component {
         return 'hidden'
     }
 
-    render() {
-        console.log('suggestion type u midu', this.props.suggestionType);
+    renderEmpty() {
+        return (
+            <div className={`suggestion-single suggestion-mid ${this.getSuggestionType()}`}>
+                <div className="suggestion-single-placeholder-wrapper">
+                    <h2 className="suggestion-single-placeholder">Type your first paragraph to get video suggestions.</h2>
+                </div>
+            </div>
+        )
+    }
+
+    renderFilled() {
         return (
             <div className={`suggestion-single suggestion-mid ${this.getSuggestionType()}`}>
                 <YouTube
-                    videoId="0PrUr3bQdwM"
+                    videoId={this.props.videoID.id.videoId}
                     className="ytiframe"
                     containerClassName="ytcontainer"
                 />
@@ -43,11 +52,17 @@ class SuggestionMid extends Component {
             </div>
         );
     }
+
+    render() {
+        console.log('propsi u midu', this.props)
+        return this.props.data ? this.renderFilled() : this.renderEmpty()
+    }
 }
 
 function mapStateToProps(state) {
     return {
         suggestionType: state.suggestionType,
+        data: state.data,
     }
 }
 

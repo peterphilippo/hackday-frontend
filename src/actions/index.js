@@ -11,13 +11,28 @@ export function expandSuggestion(suggestionType) {
     };
 }
 
-export function getData() {
-    console.log('zvao se get data');
+export function getData(paragraphArr) {
     return (dispatch) => {
-        axios.post(baseUrl + '/social', {
-            keywords: 'trump',
+        console.log(paragraphArr);
+        axios.post(baseUrl + '/keywords', {
+            text: paragraphArr,
         }).then((res) => {
-            dispatch({ type: GET_DATA, payload: res })
+            let keywords = res.data.join(' ');
+            let social = axios.post(baseUrl + '/social', {
+                keywords: keywords,
+            });
+            let article = axios.post(baseUrl + '/article', {
+                keywords: keywords,
+            });
+            let youtube = axios.post(baseUrl + '/youtube', {
+                keywords: res.data,
+            });
+            Promise.all([social, article, youtube]).then((values) => {
+                dispatch({ type: GET_DATA, payload: values })
+                console.log(values);
+            }).catch((err) => {
+                console.log(err);
+            })
         }).catch((err) => {
             console.log(err);
         });
