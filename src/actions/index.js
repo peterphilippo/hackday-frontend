@@ -17,15 +17,15 @@ export function getData(paragraphArr) {
         axios.post(baseUrl + '/keywords', {
             text: paragraphArr,
         }).then((res) => {
-            let keywords = res.data.join(' ');
+            let keywords = res.data;
             let social = axios.post(baseUrl + '/social', {
                 keywords: keywords,
             });
-            let article = axios.post(baseUrl + '/article', {
+            let article = axios.post(baseUrl + '/qwant', {
                 keywords: keywords,
             });
             let youtube = axios.post(baseUrl + '/youtube', {
-                keywords: res.data,
+                keywords: keywords,
             });
             Promise.all([social, article, youtube]).then((values) => {
                 dispatch({ type: GET_DATA, payload: values })
