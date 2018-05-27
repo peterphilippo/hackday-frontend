@@ -43,10 +43,9 @@ class SuggestionBottom extends Component {
         return (
             <div className={`suggestion-single suggestion-bot ${this.getSuggestionType()}`}>
                 <div className="suggestion-article">
-                    <div className="suggestion-article-image" alt="trumperino" style={ { backgroundImage: `url(https://pixel.nymag.com/imgs/daily/intelligencer/2017/10/24/24-trump.w710.h473.jpg)` } }/>
                     <div className="suggestion-article-info">
-                        <a className="suggestion-article-title" href="https://www.mladens.com"><h2>Trump said stupid stuff</h2></a>
-                        <p className="suggestion-article-text">Trump said lorem ipsum bla bla bla bla bla bla bla bla bla</p>
+                        <a className="suggestion-article-title" href={this.props.articleInfo.url}><h2>{this.props.articleInfo.title}</h2></a>
+                        <p className="suggestion-article-text">{this.props.articleInfo.desc}</p>
                     </div>
                 </div>
                 <button className="suggestion-button-expand" onClick={this.handleClick}>Show all</button>

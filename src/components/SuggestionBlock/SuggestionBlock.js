@@ -30,16 +30,26 @@ class SuggestionBlock extends Component {
     renderAllSuggestions() {
         var twitterId;
         var ytId;
+        var title;
+        var desc;
+        var url;
         if (this.props.data) {
             twitterId = this.props.data[0].data[0];
             ytId = this.props.data[2].data.items[0];
+            title = this.props.data[1].data[0].title;
+            desc = this.props.data[1].data[0].desc;
+            url = this.props.data[1].data[0].url;
 
         }
 
         return [
             <SuggestionTop givenID={twitterId}/>,
             <SuggestionMid videoID={ytId}/>,
-            <SuggestionBottom/>
+            <SuggestionBottom articleInfo={{
+                title,
+                desc,
+                url,
+            }}/>
         ];
     }
 
@@ -76,7 +86,6 @@ class SuggestionBlock extends Component {
     }
 
     render() {
-        console.log('PROPSI U SUGG BLOCKU', this.props);
         return (
             <div className={`suggestion-block ${this.getSuggestionType()} ${this.props.suggestionType !== 'none' ? 'suggestion-block-expanded' : ''}`}>
                 <button className="suggestion-button-clear" onClick={this.handleClick}>X</button>
