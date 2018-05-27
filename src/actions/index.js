@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const EXPAND_SUGGESTION = 'EXPAND_SUGGESTION';
-export const GET_DATA = 'GET_DATA';
+export const GET_DATA          = 'GET_DATA';
+export const GET_SENTIMENT     = 'GET_SENTIMENT';
 
 const baseUrl = 'http://localhost:3030';
 
@@ -34,7 +35,24 @@ export function getData(paragraphArr) {
                 console.log(err);
             })
         }).catch((err) => {
-            console.log(err);
+          console.log(err);
         });
     }
+}
+
+export function getSentiment(paragraphArr) {
+  return (dispatch) => {
+    console.log(paragraphArr);
+    axios.post(baseUrl + '/sentiment', {
+      text: paragraphArr,
+    }).then((res) => {
+      console.log(res.data, '-------------------sa0s7a089sa79s8a7');
+      dispatch({
+        type: GET_SENTIMENT,
+        payload: res.data
+      })
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
 }

@@ -26,6 +26,7 @@ class EditorBlock extends Component {
             if (this.textArray.length > this.nrParagraphs) {
                 this.nrParagraphs = this.textArray.length;
                 this.props.getData(this.textArray);
+                this.props.getSentiment(this.textArray);
             }
         }
         this.setState({

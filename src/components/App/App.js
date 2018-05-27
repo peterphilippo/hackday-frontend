@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import EditorBlock from '../EditorBlock/EditorBlock';
 import SuggestionBlock from '../SuggestionBlock/SuggestionBlock';
+import Sentiment from '../Sentiment/Sentiment';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
               <div className="App-intro">
                   Just start writing your article...
               </div>
+              <Sentiment></Sentiment>
               <EditorBlock/>
           </div>
           <SuggestionBlock/>
