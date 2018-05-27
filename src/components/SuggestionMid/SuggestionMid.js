@@ -54,7 +54,6 @@ class SuggestionMid extends Component {
     }
 
     render() {
-        console.log('propsi u midu', this.props)
         return this.props.data ? this.renderFilled() : this.renderEmpty()
     }
 }
