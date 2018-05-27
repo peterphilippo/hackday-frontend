@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+a {
+  color: black;
+}
+
 .App {
   text-align: center;
   height: 100vh;
@@ -43,14 +47,12 @@
 
 .suggestion-block {
   width: 40%;
-  border: 1px solid black;
   position: relative;
   height: 100%;
 }
 
 .suggestion-single {
   width: 100%;
-  border-bottom: 1px solid black;
   position: relative;
   display: flex;
   padding: 15px 0;
@@ -61,7 +63,6 @@
 }
 
 .rdw-editor-main {
-  border: 1px solid green;
   height: 80% !important;
   padding-left: 20px;
 }
@@ -78,7 +79,7 @@
 .suggestion-button-expand {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 20px;
 }
 
 .suggestion-block-multiple .suggestion-button-clear,
@@ -106,6 +107,14 @@
   opacity: 0;
 }
 
+.hidden .suggestion-article-image,
+.hidden .suggestion-article-info,
+.hidden .ytcontainer,
+.hidden. suggestion-top {
+  display: none;
+}
+
+
 .ytiframe {
   width: 500px;
   height: 200px;
@@ -113,4 +122,40 @@
 
 .ytcontainer {
   padding: 0 20px;
+}
+
+.suggestion-article {
+  width: 500px;
+  height: 200px;
+  position: relative;
+  display: flex;
+}
+
+.suggestion-article-image {
+  width: 250px;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.suggestion-article-title h2 {
+  margin-bottom: 20px;
+}
+
+.suggestion-article-text {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.suggestion-single-placeholder-wrapper {
+  width: 500px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.suggestion-block-expanded .full-size {
+  height: auto;
 }

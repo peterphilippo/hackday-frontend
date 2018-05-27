@@ -24,15 +24,13 @@ class EditorBlock extends Component {
 
         if (this.textArray.length > 1) {
             if (this.textArray.length > this.nrParagraphs) {
-                console.log(this.textArray.slice(0, -1));
                 this.nrParagraphs = this.textArray.length;
-                this.props.getData();
+                this.props.getData(this.textArray);
             }
         }
         this.setState({
             editorState,
         });
-        console.log(this.textArray.length);
     };
 
     render() {
